@@ -1,18 +1,17 @@
+
 /**
  * Created by junaid pc on 2/17/2015.
  */
 var app = require('express')();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
-
-app.get('/', function(req, res){
-    res.sendfile('index.html');
-});
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
 
 io.on('connection', function(socket){
-    console.log('a user connected');
+    socket.on('event:new:image',function(data){
+        socket.broadcast.emit('event:incoming:image',data);
+    });
 });
 
-http.listen(3000, function(){
-    console.log('listening on *:3000');
+server.listen(8000,function(){
+    console.log('Socket.io Running');
 });

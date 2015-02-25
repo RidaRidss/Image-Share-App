@@ -2,6 +2,7 @@
   "name": "Chat_App",
   "author": "Rida Bilgrami",
   "version": "0.0.1",
+  "main":"index.js",
   "description": "my first socket.io app",
   "dependencies": {
     "express": "^4.10.2"

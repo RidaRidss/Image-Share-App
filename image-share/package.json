@@ -1,7 +1,9 @@
 {
-  "name": "image-share",
-  "version": "1.0.0",
-  "description": "image-share: An Ionic project",
+"name": "Sharing_Image_App",
+  "author": "Rida Bilgrami",
+  "version": "0.0.1",
+  "main":"index.js",
+  "description": "Sharing Image Ionic project",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^0.7.1",

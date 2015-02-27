@@ -1,5 +1,5 @@
 /**
- * Created by Sandeep on 29/08/14.
+ * Created by Junaid-pc on 27/02/15.
  */
 angular.module('com.htmlxprs.imageShare.controllers',[]).controller('HomeController',['$scope','USER','$state',function($scope,USER,$state){
     $scope.user={};

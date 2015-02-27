@@ -1,5 +1,5 @@
 /**
- * Created by Sandeep on 29/08/14.
+ * Created by Junaid-pc on 27/02/15.
  */
 angular.module('com.htmlxprs.imageShare.directives',[]).directive('browseFile',['$rootScope','USER',function($rootScope,USER){
     return {

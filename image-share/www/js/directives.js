@@ -1,5 +1,5 @@
 /**
- * Created by Junaid-Pc on 2/27/2015.
+ * Created by Sandeep on 29/08/14.
  */
 angular.module('com.htmlxprs.imageShare.directives',[]).directive('browseFile',['$rootScope','USER',function($rootScope,USER){
     return {
@@ -14,27 +14,25 @@ angular.module('com.htmlxprs.imageShare.directives',[]).directive('browseFile',[
                 document.getElementById('browseBtn').click();
             }
 
-                angular.element(document.getElementById('browseBtn')).on('change',function(e){
+            angular.element(document.getElementById('browseBtn')).on('change',function(e){
 
-                var file=e.target.files[0];
+               var file=e.target.files[0];
 
-                angular.element(document.getElementById('browseBtn')).val('');
+               angular.element(document.getElementById('browseBtn')).val('');
 
-                var fileReader=new FileReader();
+               var fileReader=new FileReader();
 
-                fileReader.onload=function(event){
-                    $rootScope.$broadcast('event:file:selected',{image:event.target.result,sender:USER.name})
-                }
+               fileReader.onload=function(event){
+                   $rootScope.$broadcast('event:file:selected',{image:event.target.result,sender:USER.name});
+               }
 
-                fileReader.readAsDataURL(file);
+               fileReader.readAsDataURL(file);
             });
 
         },
         templateUrl:'views/browse-file.html'
     }
-}]);
-
-angular.module('com.htmlxprs.imageShare.directives').directive('chatList',['$rootScope','SOCKET_URL',function($rootScope,SOCKET_URL){
+}]).directive('chatList',['$rootScope','SOCKET_URL',function($rootScope,SOCKET_URL){
     return{
         replace:true,
         restrict:'AE',
@@ -47,14 +45,6 @@ angular.module('com.htmlxprs.imageShare.directives').directive('chatList',['$roo
 
             scope.messages=[];
 
-            socket.on('event:incoming:image',function(data){
-
-                scope.$apply(function(){
-                    scope.messages.unshift(data);
-                });
-
-            });
-
             $rootScope.$on('event:file:selected',function(event,data){
 
                 socket.emit('event:new:image',data);
@@ -64,6 +54,15 @@ angular.module('com.htmlxprs.imageShare.directives').directive('chatList',['$roo
                 });
 
             });
+
+            socket.on('event:incoming:image',function(data){
+
+                scope.$apply(function(){
+                    scope.messages.unshift(data);
+                });
+
+            });
+
         },
         templateUrl:'views/chat-list.html'
     }

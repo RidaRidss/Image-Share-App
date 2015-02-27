@@ -8,3 +8,8 @@ angular.module('com.htmlxprs.imageShare.controllers',[]).controller('HomeControl
         $state.go('chat');
     }
 }]);
+
+angular.module('com.htmlxprs.imageShare.controllers').controller('ChatController',['$scope','$rootScope',function($scope,$rootScope){
+
+
+}]);
